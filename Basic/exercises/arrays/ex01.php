@@ -62,6 +62,7 @@ var_dump(array_values($x));
 $color = array(4 => 'white', 6 => 'green', 11=> 'red');
 echo '<h3>Ex5</h3>';
 echo $color['4'];
+echo '<br>';
 
 // 6. Write a PHP script which decodes the following JSON string. Go to the editor
 // Sample JSON code :
@@ -74,3 +75,15 @@ echo $color['4'];
 // Title : The Cuckoos Calling
 // Author : Robert Galbraith
 // Publisher : Little Brown
+echo '<h3>Ex6</h3>';
+$json_sample = '{
+    "Title": "The Cuckoos Calling",
+"Author": "Robert Galbraith",
+"Detail": {
+"Publisher": "Little Brown"
+}}';
+function displayArr($value,$key){
+    echo "{$key}: {$value} </br>";
+}
+$arr = json_decode($json_sample,true);
+array_walk_recursive($arr,"displayArr");
