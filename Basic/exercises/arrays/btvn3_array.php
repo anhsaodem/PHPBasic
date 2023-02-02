@@ -29,7 +29,7 @@ function maxValueArr($array)
             $max = $array[$i];
         }
     }
-    echo 'Minimum value of array is: ' . $max;
+    echo 'Maximum value of array is: ' . $max;
 };
 minValueArr($numbers);
 echo '<br>';
