@@ -14,185 +14,129 @@
  * Ký tự
  * Số lần xuất hiện
  * */
+$customers = [
+    [
+        "id" => null,
+        "fullName" => "Trần Xuân Hải",
+        'email' => "chan.volodya@gmail.com",
+        'tel' => "0944503055",
+        'address' => "Tan Dan - Duc Tho - Ha Tinh"
+    ],
+    [
+        "id" => null,
+        "fullName" => "Trần Công Minh",
+        'email' => "trancongminh@gmail.com",
+        'tel' => "0294929424",
+        'address' => "Nguyễn Khang - Cầu giấy - Hà Nội"
+    ],
+    [
+        "id" => null,
+        "fullName" => "Trần Hà My",
+        'email' => "hamytran@gmail.com",
+        'tel' => "0392424990",
+        'address' => "Nguyễn Trãi - Thanh Xuân - Hà Nội"
+    ],
+    [
+        "id" => null,
+        "fullName" => "Nguyễn Duy Chuẩn",
+        'email' => "duychuanr@gmail.com",
+        'tel' => "0345991993",
+        'address' => "Nghi Bình - Nghi Xuân - Hà Tĩnh"
+    ],
+    [
+        "id" => null,
+        "fullName" => "Đào Thị Nguyệt",
+        'email' => "nguyetdaothi@gmail.com",
+        'tel' => "0978908456",
+        'address' => "Duy Tiến - Duy Tiên - Hà Nam"
+    ],
+    [
+        "id" => null,
+        "fullName" => "Nguyễn Linh Đan",
+        'email' => "linhdannguyen@gmail.com",
+        'tel' => "0345993908",
+        'address' => "Nghi Kim - Tp Vinh - Nghệ An"
+    ], [
+        "id" => null,
+        "fullName" => "Trần Văn Quyết",
+        'email' => "vanquyettran@gmail.com",
+        'tel' => "0914980839",
+        'address' => "Hòa Hợp - Diễn Châu - Nghệ An"
+    ],
+    [
+        "id" => null,
+        "fullName" => "Trần Văn Quyết",
+        'email' => "vanquyettran@gmail.com",
+        'tel' => "0914980839",
+        'address' => "Hòa Hợp - Diễn Châu - Nghệ An"
+    ],
+    [
+        "id" => null,
+        "fullName" => "Trần Văn Quyết",
+        'email' => "vanquyettran@gmail.com",
+        'tel' => "0914980839",
+        'address' => "Hòa Hợp - Diễn Châu - Nghệ An"
+    ]
+];
+// Check trùng email
+if (!empty($customers) && is_array($customers)) {
+    $arrCustomersRepeat = [];
+    for ($i = 0; $i < count($customers) - 1; $i++) {
+        for ($j = $i + 1; $j < count($customers); $j++) {
+            if ($customers[$i]['email'] == $customers[$j]['email']) {
+                $arrCustomersRepeat[] = $j;
+            }
+        }
+    }
+    print_r($arrCustomersRepeat);
+}
+//Xóa email trùng
+if(isset($arrCustomersRepeat)){
+    for($k =0;$k<count($arrCustomersRepeat)-1;$k++){
+        echo $customers[$k];
+    }
+}
+
+?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>HTML DROPDOWN</title>
-    <style>
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #333;
-        }
-
-        li {
-            float: left;
-        }
-
-        li.action {
-            float: right;
-        }
-
-        li.action a {
-            background-color: red;
-        }
-
-        li a,
-        .dropbtn {
-            display: inline-block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        li a:hover,
-        .dropdown:hover .dropbtn {
-            background-color: rebeccapurple;
-        }
-
-        li.dropdown {
-            display: inline-block;
-        }
-
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List customer</title>
 </head>
 
 <body>
-    <?php
-    $list_array = [
-        [
-            'title' => "Home",
-            'link' => "#",
-            'class' => ''
-        ],
-        [
-            'title' => "News",
-            'link' => "#",
-            'class' => ''
-        ],
-        [
-            'title' => "Product",
-            'link' => "#",
-            'class' => 'dropdown',
-            'sub' => [
-                [
-                    'title' => 'Laptop',
-                    'link' => '#'
-                ],
-                [
-                    'title' => 'Telephone',
-                    'link' => '#'
-                ],
-                [
-                    'title' => 'Tablet',
-                    'link' => '#'
-                ]
-            ],
-
-        ],
-        [
-            'title' => "Services",
-            'link' => "#",
-            'class' => 'dropdown',
-            'sub' => [
-                [
-                    'title' => 'Fix',
-                    'link' => '#'
-                ],
-                [
-                    'title' => 'Change',
-                    'link' => '#'
-                ],
-                [
-                    'title' => 'Others',
-                    'link' => '#'
-                ]
-            ],
-
-        ],
-        [
-            'title' => "By Now",
-            'link' => "#",
-            'class' => 'action'
-        ],
-    ];
-    // echo '<pre>';
-    // print_r($list_array);
-    // echo '</pre>';
-
-    //Duyet mang
-    if (!empty($list_array)) {
-        echo '<ul>';
-        //Duyet mang foreach
-        foreach ($list_array as $item) {
-            $class = (!empty($item['class'])) ? 'class="' . $item['class'] . '"' : null;
-            $class = (!empty($item['sub']))?'class = "dropdown"':$class;
-            echo '<li ' . $class . '><a href="' . $item['link'] . '">' . $item['title'] . '</a>';
-            //Drop down
-            if (!empty($item['sub'])&& is_array($item['sub'])) {
-                $subMenu = $item['sub'];
-                echo '<div class="dropdown-content">';
-                foreach ($subMenu as $itemSubMenu) {
-                echo '<a href= "'.$itemSubMenu['link'].'" >'.$itemSubMenu['title'].'</a>';
+    <h1>LIST CUSTOMERS</h1>
+    <table width="100%" border="1" cellpadding="0" cellspacing="0" style="text-align:center">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Họ và tên</th>
+                <th>Email</th>
+                <th>SĐT</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (is_array($customers) && !empty($customers)) {
+                $count = 0;
+                foreach ($customers as $item) {
+                    $count++;
+                    echo
+                    '<tr>
+                    <td>' . $count . '</td>
+                    <td>' . $item['fullName'] . '</td>
+                    <td>' . $item['email'] . '</td>
+                    <td>' . $item['tel'] . '</td>
+                    <td>' . $item['address'] . '</td>
+                    </tr>';
                 }
-                echo '</div>';
-            }
-
-
-            echo '</li>';
-        }
-        echo '</ul>';
-    }
-    ?>
-
-    <!-- <ul>
-
-        <li><a href="#home">Home</a></li>
-        <li><a href="#news">News</a></li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
-            <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-            </div>
-        </li>
-    </ul> -->
-
-    <h3>Dropdown Menu inside a Navigation Bar</h3>
-    <p>Hover over the "Dropdown" link to see the dropdown menu.</p>
+            } ?>
+        </tbody>
+    </table>
 </body>
 
 </html>
-
-
-?>
