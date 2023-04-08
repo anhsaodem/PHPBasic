@@ -19,12 +19,12 @@ trait QueryBuilder
     protected $selectField = "*";
 
     //hàm table
-    public function table($table)
+    private function table($table)
     {
         $this->table = $table;
         return $this;
     }
-    public function select(...$params)
+    private function select(...$params)
     {
         //Xử lý logic
         foreach ($params as $key => $param) {
@@ -39,7 +39,7 @@ trait QueryBuilder
         // var_dump($this->selectField);
         return $this;
     }
-    public function where($files, $condition, $value)
+    private function where($files, $condition, $value)
     {
         //Xử lý logic
         if (empty($this->where)) {
@@ -50,7 +50,7 @@ trait QueryBuilder
         $this->where .= "$options $files $condition $value";
         return $this;
     }
-    public function get()
+    private function get()
     {
         //Xử lý logic
         $this->sql =  "SELECT $this->selectField FROM $this->table $this->where";

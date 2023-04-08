@@ -22,11 +22,19 @@ class Database
             echo 'Vui long kiem tra lai PDO class';
         }
     }
+    public static function __callStatic($name, $arguments)
+    {
+        return call_user_func_array([new self(), $name], $arguments);
+    }
+    public function __call($name, $arguments)
+    {
+        return call_user_func_array([$this, $name], $arguments);
+    }
+
     public function query($sql)
     {
         $statement = $this->conn->prepare($sql);
         $statement->execute();
         return $statement;
     }
-   
 }
